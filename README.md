@@ -1,6 +1,6 @@
 # saferefl
 
-[![CI](https://github.com/lkmavi/saferefl/actions/workflows/ci.yml/badge.svg)](https://github.com/lkmavi/saferefl/actions/workflows/ci.yml)
+[![CI](https://github.com/glaciforge/saferefl/actions/workflows/ci.yml/badge.svg)](https://github.com/glaciforge/saferefl/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/lkmavi/saferefl/branch/main/graph/badge.svg)](https://codecov.io/gh/lkmavi/saferefl)
 [![Go Reference](https://pkg.go.dev/badge/github.com/lkmavi/saferefl.svg)](https://pkg.go.dev/github.com/lkmavi/saferefl)
 [![Go 1.22+](https://img.shields.io/badge/Go-1.22+-blue)](https://go.dev/dl/)

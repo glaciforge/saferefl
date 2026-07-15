@@ -130,23 +130,30 @@ jobs:
           go list ./... | grep -v '/examples/' | \
             xargs go test -race -count=1 -coverprofile=coverage-legacy.txt -covermode=atomic
 
+      # Codecov is still keyed to lkmavi/saferefl; glaciforge/saferefl is not
+      # activated yet ("Repository not found"). Keep uploading via OIDC so the
+      # first successful activation starts reporting, but do not fail CI on it.
+      # Flip fail_ci_if_error back to true after activating the repo in Codecov
+      # (GitHub App on glaciforge) or after setting secrets.CODECOV_TOKEN.
       - name: Upload coverage to Codecov (stable)
         if: matrix.go-version == 'stable'
         uses: codecov/codecov-action@v5
         with:
           use_oidc: true
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage-default.txt,./coverage-strict.txt
           name: codecov-saferefl-stable
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
       - name: Upload coverage to Codecov (1.22, legacy hmap backend)
         if: matrix.go-version == '1.22.x'
         uses: codecov/codecov-action@v5
         with:
           use_oidc: true
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage-legacy.txt
           name: codecov-saferefl-go122
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
   lint:
     name: Lint
